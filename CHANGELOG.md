@@ -47,6 +47,7 @@ Docs: https://docs.openclaw.ai
 
 ### Fixes
 
+- Agents/cache: keep per-turn runtime context out of ordinary chat system prompts while still delivering hidden current-turn context, restoring prompt-cache reuse on chat continuations. Fixes #77431. Thanks @Udjin79.
 - Doctor/config: restore legacy group chat config migrations for `routing.allowFrom`, `routing.groupChat.*`, and `channels.telegram.requireMention` so upgrades keep WhatsApp, Telegram, and iMessage group mention gates and history settings instead of leaving configs invalid or silently blocked. Thanks @scoootscooob.
 - CLI/update: make package-update follow-up processes write completion results and exit explicitly, so Windows packaged upgrades do not hang after the new package finishes post-core plugin work. Thanks @vincentkoc.
 - Release validation: skip Slack live QA unless Slack credentials are explicitly configured, so release gates can keep proving non-Slack surfaces while Slack is still local and credential-gated. Thanks @vincentkoc.
